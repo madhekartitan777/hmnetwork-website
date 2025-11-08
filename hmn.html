@@ -407,40 +407,8 @@
       });
       document.getElementById(id).classList.toggle('show');
     }
-
-    // Comment Section with localStorage
-    const form = document.getElementById('commentForm');
-    const list = document.getElementById('commentList');
-
-    function addComment(name, message) {
-      const comment = document.createElement('div');
-      comment.classList.add('comment');
-      comment.innerHTML = `<strong>${name}</strong><p>${message}</p>`;
-      list.prepend(comment);
-    }
-
-    function saveComment(name, message) {
-      const savedComments = JSON.parse(localStorage.getItem('comments') || '[]');
-      savedComments.push({name, message});
-      localStorage.setItem('comments', JSON.stringify(savedComments));
-    }
-
-    window.addEventListener('load', () => {
-      const savedComments = JSON.parse(localStorage.getItem('comments') || '[]');
-      savedComments.forEach(c => addComment(c.name, c.message));
-    });
-
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if(name && message){
-        addComment(name, message);
-        saveComment(name, message);
-        form.reset();
-      }
-    });
   </script>
 
 </body>
 </html>
+
